@@ -1,3 +1,5 @@
+import me.xdrop.fuzzywuzzy.FuzzySearch;
+
 public class Compare {
     public Compare(){
 
@@ -9,6 +11,7 @@ public class Compare {
     }
 
     public boolean compare(String word1, String word2, double threshold){
-        return word1.equals(word2);
+        double ratio = (double)FuzzySearch.ratio(word1, word2);
+        return ((ratio/100 - threshold) < 0.1);
     }
 }
