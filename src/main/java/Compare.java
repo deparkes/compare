@@ -12,6 +12,6 @@ public class Compare {
 
     public boolean compare(String word1, String word2, double threshold){
         double ratio = (double)FuzzySearch.ratio(word1, word2);
-        return ((ratio/100 - threshold) < 0.1);
+        return (ratio/100 > threshold);
     }
 }
