@@ -53,6 +53,7 @@ test {
     dependsOn 'cleanTest'
 
     // Show test results.
+    testLogging.showStandardStreams = true
     testLogging {
         events "passed", "skipped", "failed"
     }
