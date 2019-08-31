@@ -14,13 +14,13 @@ public class Stepdefs {
     }
 
     @When("When I provide \"([^\"]*)\" and \"([^\"]*)\"")
-    public void i_ask_whether_it_s_Friday_yet(String string, String string2) {
+    public void when_i_provide_words(String string, String string2) {
         Compare compare = new Compare();
         actualAnswer = compare.compare(string, string2);
     }
 
     @When("When I provide {string} and {string} with threshold {double}")
-    public void i_ask_whether_it_s_Friday_yet(String string, String string2, Double threshold) {
+    public void when_i_provide_words_and_threshold(String string, String string2, Double threshold) {
         Compare compare = new Compare();
         actualAnswer = compare.compare(string, string2, threshold);
     }
