@@ -1,3 +1,5 @@
+package compare;
+
 import me.xdrop.fuzzywuzzy.FuzzySearch;
 
 public class Compare {

@@ -33,6 +33,8 @@ task integTest(type: Test) {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.1'
+    testImplementation "io.cucumber:cucumber-java:4.7.1"
+    testImplementation "io.cucumber:cucumber-junit:4.7.1"
     compile group: 'me.xdrop', name: 'fuzzywuzzy', version: '1.2.0'
 }
 
@@ -45,7 +47,7 @@ jar {
 
 test {
     // Enable JUnit 5 (Gradle 4.6+).
-    useJUnitPlatform()
+    //useJUnitPlatform()
 
     // Always run tests, even when nothing changed.
     dependsOn 'cleanTest'
@@ -58,7 +60,7 @@ test {
 
 integTest {
     // Enable JUnit 5 (Gradle 4.6+).
-    useJUnitPlatform()
+    //useJUnitPlatform()
 
     // Always run tests, even when nothing changed.
     dependsOn 'cleanIntegTest'
@@ -69,3 +71,19 @@ integTest {
     }
 }
 
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+task cucumber() {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty', '--glue', 'gradle.cucumber', 'src/test/resources']
+        }
+    }
+}

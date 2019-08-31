@@ -1,3 +1,6 @@
+package compare;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,20 +28,20 @@ public class TestCompare {
     @Test
     public void testTwoWordsNotTheSame(){
         Compare compare = new Compare();
-        assertFalse(compare.compare("word", "different word"));
+        Assertions.assertFalse(compare.compare("word", "different word"));
     }
 
 
     @Test
     public void testTwoWordsWithinThreshold(){
         Compare compare = new Compare();
-        assertTrue(compare.compare("word", "wurd", 0.7));
+        Assertions.assertTrue(compare.compare("word", "wurd", 0.7));
     }
 
     @Test
     public void testTwoWordsOutOfThreshold(){
         Compare compare = new Compare();
-        assertFalse(compare.compare("word", "x", 0.1));
+        Assertions.assertFalse(compare.compare("word", "x", 0.1));
     }
 
 
