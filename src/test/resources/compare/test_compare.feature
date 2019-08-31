@@ -13,10 +13,10 @@ Feature: Are these words the same
 
   Scenario: Similar enough word
     Given I want to make a comparison
-    When When I provide "word1" and "word2" with threshold 0.1
+    When When I provide "word" and "wurd" with threshold 0.7
     Then I should be told "true"
 
   Scenario: Not similar enough word
     Given I want to make a comparison
-    When When I provide "word1" and "word2" with threshold 0.9
+    When When I provide "x" and "word2" with threshold 0.1
     Then I should be told "false"

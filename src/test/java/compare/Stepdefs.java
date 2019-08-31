@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class Stepdefs {
-    private double threshold;
     private boolean actualAnswer;
 
     @Given("I want to make a comparison")
@@ -20,8 +19,8 @@ public class Stepdefs {
         actualAnswer = compare.compare(string, string2);
     }
 
-    @When("When I provide {string} and {string} with threshold {float}")
-    public void i_ask_whether_it_s_Friday_yet(String string, String string2, Double threhsold) {
+    @When("When I provide {string} and {string} with threshold {double}")
+    public void i_ask_whether_it_s_Friday_yet(String string, String string2, Double threshold) {
         Compare compare = new Compare();
         actualAnswer = compare.compare(string, string2, threshold);
     }
